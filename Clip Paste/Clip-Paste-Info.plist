@@ -2,36 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-	<!-- ==== BASIC BUNDLE INFO ==== -->
 	<key>CFBundleName</key>
 	<string>Clip Paste</string>
-
 	<key>CFBundleDisplayName</key>
 	<string>Clip Paste</string>
-
 	<key>CFBundleIdentifier</key>
 	<string>com.ellandeved.Clip-Paste</string>
-
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-
 	<key>CFBundleVersion</key>
 	<string>1</string>
-
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
-
+	<string>1.1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>13.0</string>
-
-	<!-- ==== APP ICONS (REQUIRED BY ONBOARDINGKIT) ==== -->
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
-
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -44,21 +32,13 @@
 			<string>AppIcon</string>
 		</dict>
 	</dict>
-
-	<!-- ==== PERMISSIONS ==== -->
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Clip Paste needs permission to control Finder to save files in the selected folder.</string>
-
 	<key>LSUIElement</key>
 	<false/>
-
-	<!-- ==== LOCALIZATION ==== -->
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-
-	<!-- ==== DOCUMENT / DEPLOYMENT ==== -->
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
-
 </dict>
 </plist>
