@@ -1,17 +1,17 @@
-//
-//  Clip_PasteApp.swift
-//  Clip Paste
-//
-//  Created by van Egmond Dascon on 07/12/2025.
-//
-
 import SwiftUI
+import AppKit
+import KeyboardShortcuts
+import LaunchAtLogin
 
 @main
-struct Clip_PasteApp: App {
+struct PasteHelperApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        // We do not show a default WindowGroup. Settings are handled manually
+        Settings {
+            SettingsView()
+                .frame(minWidth: 420, idealWidth: 480, minHeight: 320, idealHeight: 380)
         }
     }
 }
