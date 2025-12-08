@@ -12,6 +12,7 @@ struct SettingsView: View {
     @State private var isImageEnabled: Bool = Preferences.isImageBehaviorEnabled
     @State private var isTextEnabled: Bool = Preferences.isTextBehaviorEnabled
     @State private var selectedSaveLocation: SaveLocation = Preferences.saveLocation
+    @State private var isDefaultSaveEnabled: Bool = Preferences.isDefaultSaveEnabled
     @State private var imageTemplate: String = Preferences.imageFilenameTemplate
     @State private var textTemplate: String = Preferences.textFilenameTemplate
     @State private var selectedTab: SettingsTab = .general
@@ -27,11 +28,15 @@ struct SettingsView: View {
                 Text("Text").tag(SettingsTab.text)
             }
             .pickerStyle(.segmented)
+            .tint(.blue)
 
             Group {
                 switch selectedTab {
                 case .general:
-                    GeneralSettingsTab(selectedSaveLocation: $selectedSaveLocation)
+                    GeneralSettingsTab(
+                        selectedSaveLocation: $selectedSaveLocation,
+                        isDefaultSaveEnabled: $isDefaultSaveEnabled
+                    )
                 case .image:
                     ImageSettingsTab(
                         isImageEnabled: $isImageEnabled,
@@ -58,6 +63,9 @@ struct SettingsView: View {
         .onChange(of: selectedSaveLocation) { newValue in
             Preferences.saveLocation = newValue
         }
+        .onChange(of: isDefaultSaveEnabled) { newValue in
+            Preferences.isDefaultSaveEnabled = newValue
+        }
         .onChange(of: imageTemplate) { newValue in
             Preferences.imageFilenameTemplate = newValue
         }
@@ -73,6 +81,7 @@ struct SettingsView: View {
 
 struct GeneralSettingsTab: View {
     @Binding var selectedSaveLocation: SaveLocation
+    @Binding var isDefaultSaveEnabled: Bool
 
     var body: some View {
         ScrollView {
@@ -89,21 +98,42 @@ struct GeneralSettingsTab: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 GroupBox(label: Text("Default Save Location").font(.headline)) {
-                    Picker("Save files to:", selection: $selectedSaveLocation) {
-                        ForEach(SaveLocation.allCases) { location in
-                            Text(location.displayName).tag(location)
-                        }
-                    }
-                    .pickerStyle(.segmented)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Toggle("Use a default save folder when Finder is not frontmost", isOn: $isDefaultSaveEnabled)
 
-                    Text("Files are always created in this folder when using the shortcut in Finder.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Picker("Save files to:", selection: $selectedSaveLocation) {
+                                ForEach(SaveLocation.allCases) { location in
+                                    Text(location.displayName).tag(location)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+
+                            Text("This were the file will be saved when executing the app outside Finder.")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        .disabled(!isDefaultSaveEnabled)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 GroupBox(label: Text("General").font(.headline)) {
                     LaunchAtLogin.Toggle("Open at login")
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                GroupBox(label: Text("Updates").font(.headline)) {
+                    HStack {
+                        Text("Check for a new version of Clip Paste on GitHub.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Button("Check for Updates…") {
+                            CPUpdateChecker.shared.checkNow()
+                        }
+                        .controlSize(.small)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -160,6 +190,7 @@ The .png extension is added automatically.
 
                             HStack {
                                 TextField("Image filename template", text: $imageTemplate)
+                                    .frame(maxWidth: .infinity)
                                     .textFieldStyle(.roundedBorder)
                                 Text(".png")
                                     .foregroundColor(.secondary)
@@ -249,6 +280,7 @@ The .txt extension is added automatically.
 
                             HStack {
                                 TextField("Text filename template", text: $textTemplate)
+                                    .frame(maxWidth: .infinity)
                                     .textFieldStyle(.roundedBorder)
                                 Text(".txt")
                                     .foregroundColor(.secondary)
@@ -294,5 +326,4 @@ The .txt extension is added automatically.
 }
 
 
-//#Preview {SettingsView()}
-
+///#Preview {SettingsView()}

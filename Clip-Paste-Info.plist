@@ -2,7 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>Clip Paste needs to control Finder to save files in the current folder.</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>AppIcon</string>
+		<string>I think I have no info, please. </string>
+	</array>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 </dict>
 </plist>

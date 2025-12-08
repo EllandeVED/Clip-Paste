@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E00C37A2EE63771008542E9 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 1E00C3792EE63771008542E9 /* KeyboardShortcuts */; };
 		1E00C37D2EE6379E008542E9 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1E00C37C2EE6379E008542E9 /* LaunchAtLogin */; };
+		1E00C3822EE658A4008542E9 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 1E00C3812EE658A4008542E9 /* DockProgress */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 			files = (
 				1E00C37D2EE6379E008542E9 /* LaunchAtLogin in Frameworks */,
 				1E00C37A2EE63771008542E9 /* KeyboardShortcuts in Frameworks */,
+				1E00C3822EE658A4008542E9 /* DockProgress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				1E00C3792EE63771008542E9 /* KeyboardShortcuts */,
 				1E00C37C2EE6379E008542E9 /* LaunchAtLogin */,
+				1E00C3812EE658A4008542E9 /* DockProgress */,
 			);
 			productName = "Clip Paste";
 			productReference = 1E00C3372EE633D0008542E9 /* Clip Paste.app */;
@@ -207,6 +210,7 @@
 			packageReferences = (
 				1E00C3782EE63771008542E9 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				1E00C37B2EE6379E008542E9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				1E00C3802EE658A4008542E9 /* XCRemoteSwiftPackageReference "DockProgress" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E00C3382EE633D0008542E9 /* Products */;
@@ -407,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Clip Paste/Clip_Paste.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -415,13 +420,17 @@
 				DEVELOPMENT_TEAM = 6C2PG6C5FF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Clip-Paste-Info.plist";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Clip Paste/Clip-Paste-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clip Paste";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Clip Paste needs to control Finder to save files in the current folder.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ellandeved.Clip-Paste";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Clip Paste/Clip_Paste.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -444,13 +454,17 @@
 				DEVELOPMENT_TEAM = 6C2PG6C5FF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Clip-Paste-Info.plist";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Clip Paste/Clip-Paste-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Clip Paste";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Clip Paste needs to control Finder to save files in the current folder.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ellandeved.Clip-Paste";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -586,6 +600,14 @@
 				kind = branch;
 			};
 		};
+		1E00C3802EE658A4008542E9 /* XCRemoteSwiftPackageReference "DockProgress" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/DockProgress";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -598,6 +620,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E00C37B2EE6379E008542E9 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		1E00C3812EE658A4008542E9 /* DockProgress */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E00C3802EE658A4008542E9 /* XCRemoteSwiftPackageReference "DockProgress" */;
+			productName = DockProgress;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -27,6 +27,7 @@ enum BehaviorKey: String {
     case textFilenameTemplate
     case imageCounter
     case textCounter
+    case isDefaultSaveEnabled
 }
 
 struct Preferences {
@@ -52,6 +53,19 @@ struct Preferences {
         }
         set {
             defaults.set(newValue.rawValue, forKey: BehaviorKey.saveLocation.rawValue)
+        }
+    }
+
+    static var isDefaultSaveEnabled: Bool {
+        get {
+            if let value = defaults.object(forKey: BehaviorKey.isDefaultSaveEnabled.rawValue) as? Bool {
+                return value
+            }
+            // Default behaviour: enabled to match previous versions
+            return true
+        }
+        set {
+            defaults.set(newValue, forKey: BehaviorKey.isDefaultSaveEnabled.rawValue)
         }
     }
 

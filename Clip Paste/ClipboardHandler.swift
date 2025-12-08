@@ -113,10 +113,14 @@ enum ClipboardHandler {
                     print("[Clip Paste] Not authorized to control Finder; will NOT fall back to default save location")
                     return nil
                 } else {
-                    print("[Clip Paste] Could not resolve Finder frontmost folder (not an authorization issue), falling back to default save location")
-                    print("[Clip Paste] Falling back to default save location: \(Preferences.saveLocation)")
+                    print("[Clip Paste] Could not resolve Finder frontmost folder (not an authorization issue), falling back to default save location (if enabled)")
                 }
             }
+        }
+
+        if !Preferences.isDefaultSaveEnabled {
+            print("[Clip Paste] Default save location is disabled and Finder folder could not be resolved; aborting smart paste.")
+            return nil
         }
         
         guard let defaultURL = defaultSaveDirectoryURL() else {
@@ -124,7 +128,7 @@ enum ClipboardHandler {
             return nil
         }
         print("[Clip Paste] saveDirectoryURL (default) -> \(defaultURL.path) for location \(Preferences.saveLocation)")
-        print("[Clip Paste] This is the folder that will be used when Finder is not frontmost or resolution fails.")
+        print("[Clip Paste] This folder is used when Finder is not frontmost or when the Finder folder cannot be resolved (and default save is enabled).")
         return defaultURL
     }
     
