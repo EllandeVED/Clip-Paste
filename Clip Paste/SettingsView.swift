@@ -54,22 +54,22 @@ struct SettingsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .padding(20)
-        .onChange(of: isImageEnabled) { newValue in
+        .onChange(of: isImageEnabled) { _, newValue in
             Preferences.isImageBehaviorEnabled = newValue
         }
-        .onChange(of: isTextEnabled) { newValue in
+        .onChange(of: isTextEnabled) { _, newValue in
             Preferences.isTextBehaviorEnabled = newValue
         }
-        .onChange(of: selectedSaveLocation) { newValue in
+        .onChange(of: selectedSaveLocation) { _, newValue in
             Preferences.saveLocation = newValue
         }
-        .onChange(of: isDefaultSaveEnabled) { newValue in
+        .onChange(of: isDefaultSaveEnabled) { _, newValue in
             Preferences.isDefaultSaveEnabled = newValue
         }
-        .onChange(of: imageTemplate) { newValue in
+        .onChange(of: imageTemplate) { _, newValue in
             Preferences.imageFilenameTemplate = newValue
         }
-        .onChange(of: textTemplate) { newValue in
+        .onChange(of: textTemplate) { _, newValue in
             Preferences.textFilenameTemplate = newValue
         }
         .onAppear {

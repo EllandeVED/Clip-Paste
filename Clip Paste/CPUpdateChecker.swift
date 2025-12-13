@@ -376,7 +376,7 @@ final class CPUpdateChecker {
         progressLabel = label
         finderButton = finder
 
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 60)
 
         let task = URLSession.shared.downloadTask(with: request) { [weak self] tempURL, response, error in
             guard let self else { return }
@@ -408,9 +408,11 @@ final class CPUpdateChecker {
             do {
                 try? FileManager.default.removeItem(at: dest)
                 try FileManager.default.moveItem(at: tempURL, to: dest)
-                self.downloadedFileURL = dest
 
                 DispatchQueue.main.async {
+                    
+                    self.downloadedFileURL = dest
+
                     guard let bar = self.progressBar else {
                         // If for some reason the bar is gone, just show Finder button immediately
                         if let label = self.progressLabel {
