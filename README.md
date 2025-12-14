@@ -8,7 +8,7 @@ CLIP PASTE
 </h1>
 </div>
 
-Clip Paste is a small utility app for Finder on macOS.
+Clip Paste is a small utility app for Finder on macOS. It allows to paste images and text as images/text files in finder.
 
 ---
 
