@@ -84,12 +84,12 @@ The app is now ready to use.
 
 ## Currently Working On
 
-- Custom locations for the default save folder
-- Support for more image formats
-- Support for more text formats (including formatting)
-- A hide Dock icon option
-- A check-for-updates enable/disable option
-- An optional menu bar icon
+- [ ] Custom locations for the default save folder
+- [ ] Support for more image formats
+- [ ] Support for more text formats (including formatting)
+- [x] A hide Dock icon option
+- [ ] A check-for-updates enable/disable option
+- [ ] An optional menu bar icon
 
 ---
 
